@@ -17,7 +17,8 @@ const links: Link[] = [
 ];
 const NavBar = () => {
   const currentPath = usePathname();
-
+ console.log(currentPath);
+ 
   return (
     <nav className="navbar bg-violet-600">
       <Logo />
@@ -26,7 +27,7 @@ const NavBar = () => {
           <Link
             href={link.href}
             className={`btn btn-ghost text-l mx-1 text-zinc-100 hover:bg-pink-400 ${
-              currentPath == link.href && " text-pink-400 "
+              currentPath == link.href && " text-pink-400 bg-pink-400"
             }`}
           >
             {link.logo}
