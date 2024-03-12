@@ -17,7 +17,6 @@ const links: Link[] = [
 ];
 const NavBar = () => {
   const currentPath = usePathname();
- console.log(currentPath);
  
   return (
     <nav className="navbar bg-violet-600">
