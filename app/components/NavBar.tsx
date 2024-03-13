@@ -3,9 +3,9 @@ import Link from "next/link";
 import React from "react";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
-import { IoLogIn } from "react-icons/io5";
+import { IoLogIn,IoLogOut } from "react-icons/io5";
 import { FaHome, FaBoxTissue } from "react-icons/fa";
-
+import {useSession} from 'next-auth/react'
 interface Link {
   label: string;
   href: string;
@@ -17,33 +17,47 @@ const links: Link[] = [
 ];
 const NavBar = () => {
   const currentPath = usePathname();
- 
+  const {status,data:session} = useSession()
   return (
     <nav className="navbar bg-violet-600">
       <Logo />
-      <div className="flex-1">
+      <ul className="flex-1">
         {links.map((link) => (
+          <li key={link.href}>
           <Link
             href={link.href}
             className={`btn btn-ghost text-l mx-1 text-zinc-100 hover:bg-pink-400 ${
               currentPath == link.href && " text-pink-400 bg-pink-400"
             }`}
-          >
+            >
             {link.logo}
             {link.label}
           </Link>
+            </li>
         ))}
-      </div>
+      </ul>
       <div className="flex-none">
-        <Link
-          href={"/login"}
+       {status=='authenticated'  && <Link
+          href={"/api/auth/signout"}
           className={`btn btn-ghost text-l mx-1 bg-zinc-100 hover:bg-zinc-300 ${
             currentPath == "/login" && " bg-pink-100 text-pink-500"
           }`}
         >
-          <IoLogIn />
-          Login
-        </Link>
+          <IoLogOut />
+          Logout
+        </Link> 
+}
+{status=='unauthenticated' &&
+        <Link
+        href={"/api/auth/signin"}
+        className={`btn btn-ghost text-l mx-1 bg-zinc-100 hover:bg-zinc-300 ${
+          currentPath == "/login" && " bg-pink-100 text-pink-500"
+        }`}
+      >
+        <IoLogIn />
+        Login
+      </Link>
+        }
       </div>
     </nav>
   );
