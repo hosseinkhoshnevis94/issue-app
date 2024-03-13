@@ -1,7 +1,15 @@
 import React from "react";
-import IssueFrom from "../../_components/IssueForm";
 import prisma from "@/prisma/client";
 import { notFound } from "next/navigation";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/app/components";
+const IssueForm = dynamic(
+    ()=>import('@/app/issues/_components/IssueForm'),
+    {
+      ssr:false,
+      loading:()=> <Skeleton/>
+    }
+  )
 interface Props {
   params: { id: string };
 }
@@ -14,9 +22,9 @@ const EditIssuePage = async ({ params }: Props) => {
   if(!issue) return notFound()
 
   return (
-    <>
-      <IssueFrom issue={issue}></IssueFrom>
-    </>
+    <div className="flex flex-col justify-center items-center mt-2">
+      <IssueForm issue={issue}></IssueForm>
+    </div>
   );
 };
 

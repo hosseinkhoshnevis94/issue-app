@@ -1,7 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import IssueFrom from "../_components/IssueForm";
-import { Skeleton, Spinner } from "@/app/components";
+import { Skeleton } from "@/app/components";
 
 const IssueForm = dynamic(
   ()=>import('@/app/issues/_components/IssueForm'),
