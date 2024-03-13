@@ -6,7 +6,8 @@ interface ModalProps {
   buttonText: string;
   onClose?:()=>void;
   onClick?:(id?:any)=> void,
-  error?:string
+  error?:string,
+
 }
 
 const Modal: React.FC<ModalProps> = ({ title, buttonText,onClick,onClose ,error}) => {
