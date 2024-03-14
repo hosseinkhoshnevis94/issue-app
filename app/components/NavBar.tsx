@@ -4,6 +4,8 @@ import React from "react";
 import Logo from "./Logo";
 import { usePathname } from "next/navigation";
 import { FaHome, FaBoxTissue } from "react-icons/fa";
+import { MdTask } from "react-icons/md";
+
 import AuthStatus from "./AuthStatus";
 interface Link {
   label: string;
@@ -13,6 +15,7 @@ interface Link {
 const links: Link[] = [
   { label: "Home", href: "/", logo: <FaHome /> },
   { label: "issues", href: "/issues", logo: <FaBoxTissue /> },
+  { label: "my tasks", href: "/issues", logo: <MdTask /> },
 ];
 const NavBar = () => {
   const currentPath = usePathname();
