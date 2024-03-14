@@ -21,8 +21,9 @@ body {
   
 }
 
+
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .nav-link {
+    @apply btn btn-ghost text-lg mx-1 text-zinc-100 hover:bg-pink-400;
   }
 }

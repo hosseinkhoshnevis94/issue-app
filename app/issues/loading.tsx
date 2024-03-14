@@ -10,7 +10,6 @@ const LoadingIssuePage = () => {
         <Link href={"./issues/new"}>New</Link>
       </button>
       <div className="mt-10">
-        {true && <div>loaidng</div>}
         <table className="table table-zebra">
           <thead>
             <tr>

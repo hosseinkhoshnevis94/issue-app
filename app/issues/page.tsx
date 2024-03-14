@@ -12,7 +12,7 @@ const IssuesPage = async () => {
       <div className='mt-10'>
         <table className="table table-zebra">
           <thead>
-            <tr>
+            <tr className='text-lg'>
               <th>Title</th>
               <th>Created at</th>
               <th>updated at</th>
@@ -21,12 +21,12 @@ const IssuesPage = async () => {
             </tr>
           </thead>
           <tbody>
-          { issues.map((issue,index)=> 
+          { issues.map((issue:any,index:number)=> 
             <tr key={issue.id}>
               <td><Link className='link link-primary font-bold hover:text-pink-600' href={`/issues/${issue.id}`}>{issue.title}</Link></td>
-              <td>{issue.description}</td>
               <td>{issue.createdAt.toDateString()}</td>
               <td>{issue.updatedAt.toDateString()}</td>
+              <td>{issue.description}</td>
               <td><IssueStatusBadge status={issue.status} /></td>
             </tr>
 )}
