@@ -24,6 +24,11 @@ export default function RootLayout({
         <main className="p-5">
         {children}
         </main>
+        <footer className="foote">
+    <div className="container">
+        <p>Issue app | All right reserved@2024</p>
+    </div>
+</footer>
         </body>
       </AuthProvider>
     </html>
